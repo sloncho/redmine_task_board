@@ -121,6 +121,7 @@ var TaskBoardUtils = {
     var options = Object.extend({
       method: 'post',
       parameters: params.join('&'),
+      requestHeaders: ['X-CSRF-Token', $$('meta[name="csrf-token"]')[0].content],
       onLoading: function() {
         $('ajax-indicator').show();
       },
@@ -151,6 +152,7 @@ var TaskBoardUtils = {
       new Ajax.Request(project_archive_url, {
         method: 'post',
         parameters: TaskBoardUtils.serializeCheckedButtons(),
+	requestHeaders: ['X-CSRF-Token', $$('meta[name="csrf-token"]')[0].content],
         onLoading: function() {
           $('ajax-indicator').show();
         },
